@@ -29,6 +29,16 @@
 				<h5 class="card-title">사용기술 : ${notice.skill}</h5>
 				<br>
 				<h5 class="card-title">채용 내용 : ${notice.content}</h5>
+				
+				<h5 class="card-title">
+
+					회사가 올린 다른 채용공고 :
+					<c:forEach var="notice2" items="${noticeByComId}">
+						<c:if test="${notice.id != notice2.id}">
+							<a href="/notice/${notice2.id}?comId=${notice2.company.comId}">${notice2.id}</a>
+						</c:if>
+					</c:forEach>
+				</h5>
 
 			</div>
 		</div>

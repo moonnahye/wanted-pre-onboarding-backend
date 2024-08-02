@@ -35,8 +35,9 @@ public class noticeController {
 	
 	// 상세한 공고 페이지
 	@GetMapping("/notice/{id}")
-	public String showDetailPage(@PathVariable int id, Model model) {
+	public String showDetailPage(@PathVariable int id, Model model, @RequestParam int comId) {
 		model.addAttribute("notice",noticeService.getNoticeDetail(id));
+		model.addAttribute("noticeByComId", noticeService.getNoticeByComId(comId));
 		return "noticeDetail";
 	}
 	

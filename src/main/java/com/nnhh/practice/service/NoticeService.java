@@ -85,8 +85,14 @@ public class NoticeService {
 		notice.setSkill(requestNotice.getSkill());
 	}
 	
+	//검색어로 공고 목록 가져오기
 	@Transactional(readOnly = true)
 	public List<Notice> getNoticeByKeyword(String keyword){
 		return noticeRepository.findByContentContainingOrPositionContainingOrSkillContaining(keyword, keyword, keyword);
+	}
+	
+	//Company의 comId로 공고목록 가져오기
+	public List<Notice> getNoticeByComId(int ComId){
+		return noticeRepository.findByCompany_ComId(ComId);
 	}
  }

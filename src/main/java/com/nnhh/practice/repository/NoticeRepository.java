@@ -10,5 +10,7 @@ public interface NoticeRepository  extends JpaRepository<Notice, Integer>{
 	
 	List<Notice> findByContentContainingOrPositionContainingOrSkillContaining(String content, String position,
 			String skill);
+	
+	List<Notice> findByCompany_ComId(int comId);
 
 }
