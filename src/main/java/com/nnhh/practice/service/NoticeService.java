@@ -1,5 +1,7 @@
 package com.nnhh.practice.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,7 @@ public class NoticeService {
 	private final NoticeRepository noticeRepository;
 	private final CompanyRepository companyRepository;
 	
+	//채용공고 저장하기
 	@Transactional
 	public void saveNotice(NoticeSaveReqDto dto) {
 		
@@ -49,5 +52,19 @@ public class NoticeService {
 		
 		noticeRepository.save(notice);
 	}
+	
+	//채용공고 리스트 가져오기
+	@Transactional(readOnly = true)
+	public List<Notice> getNoticeList() {
+		return noticeRepository.findAll();
+	}
+	
+	//상세한 채용공고 가져오기
+	@Transactional(readOnly = true)
+	public Notice getNoticeDetail(int id) {
+		return noticeRepository.findById(id).orElseThrow(()->
+			new IllegalArgumentException("공고가 없습니다. 공고 ID:"+id));
+	}
+	
 
 }

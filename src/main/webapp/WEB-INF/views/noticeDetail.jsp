@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +12,10 @@
 </head>
 <body>
 
-<div class="container">
-<br>
-<a href="/notice/saveForm" class="btn btn-secondary">채용공고 등록하기</a>
+	<div class="container">
+		<br> <a href="/" class="btn btn-secondary">모든 채용공고 보기</a>
 
-<c:forEach var="notice" items="${notice}">
+
 		<div class="card m-4">
 			<div class="card-body">
 				<input type="hidden" id="id" value="${notice.id}">
@@ -25,20 +23,19 @@
 				<h5 class="card-title">회사 이름 : ${notice.company.name}</h5>
 				<h5 class="card-title">국가 : ${notice.company.nation}</h5>
 				<h5 class="card-title">지역 : ${notice.company.area}</h5>
-
+				<br>
 				<h5 class="card-title">채용 포지션 : ${notice.position}</h5>
 				<h5 class="card-title">채용 보상금 : ${notice.compensation}</h5>
 				<h5 class="card-title">사용기술 : ${notice.skill}</h5>
+				<br>
+				<h5 class="card-title">채용 내용 : ${notice.content}</h5>
 
-				
-					<a href="/notice/${notice.id}" class="btn btn-primary">상세보기</a>
-				
 			</div>
 		</div>
-	</c:forEach>
 
 
-</div>
+
+	</div>
 
 	<script src="/js/notice.js"></script>
 </body>

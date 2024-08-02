@@ -17,10 +17,15 @@ public class noticeApiController {
 	
 	private final NoticeService  noticeService;
 	
+	//데이터 저장하기
 	@PostMapping("/api/notice")
 	public ResponseDto<String> save(@RequestBody NoticeSaveReqDto dto){
 		noticeService.saveNotice(dto);
 		return new ResponseDto<>(HttpStatus.OK.value(), "성공");
 	}
+	
+	
+	
+	
 
 }
