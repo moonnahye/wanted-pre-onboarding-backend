@@ -25,7 +25,7 @@ public class noticeController {
 	
 	//채용공고 등록 페이지
 	@GetMapping("/notice/saveForm")
-	public String savePage() {
+	public String saveNoticePage() {
 		return "saveNoticeForm";
 	}
 	
@@ -36,6 +36,12 @@ public class noticeController {
 		return "noticeDetail";
 	}
 	
+	// 채용공고 수정 페이지
+		@GetMapping("/notice/{id}/updateForm")
+		public String updateNoticePage(@PathVariable int id, Model model) {
+			model.addAttribute("notice",noticeService.getNoticeDetail(id));
+			return "updateNoticeForm";
+		}
 	
 	
 

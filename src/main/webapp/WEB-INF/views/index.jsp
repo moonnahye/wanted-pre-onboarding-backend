@@ -34,7 +34,7 @@
 					<div class="d-flex justify-content-between">
 					<a href="/notice/${notice.id}" class="btn btn-primary">상세보기</a>
 					<div>
-						<a href="#" class="btn btn-dark">수정하기</a>
+						<a href="/notice/${notice.id}/updateForm" class="btn btn-dark">수정하기</a>
 						<button class="btn-delete btn btn-warning" data-id="${notice.id}">삭제하기</button>
 					</div>
 				</div>

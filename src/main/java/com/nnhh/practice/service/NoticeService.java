@@ -66,10 +66,22 @@ public class NoticeService {
 			new IllegalArgumentException("공고가 없습니다. 공고 ID:"+id));
 	}
 	
+	//채용공고 삭제하기
 	@Transactional
 	public void deleteNotice(int id) {
 		noticeRepository.deleteById(id);
 	}
 	
-
+	//채용공고 수정하기
+	@Transactional
+	public void updateNotice(int id, Notice requestNotice) {
+		
+		Notice notice = noticeRepository.findById(id).orElseThrow(()->
+		new IllegalArgumentException("공고가 없습니다. 공고 ID:"+id));
+		
+		notice.setPosition(requestNotice.getPosition());
+		notice.setCompensation(requestNotice.getCompensation());
+		notice.setContent(requestNotice.getContent());
+		notice.setSkill(requestNotice.getSkill());
+	}
 }
