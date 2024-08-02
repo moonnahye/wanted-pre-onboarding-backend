@@ -1,10 +1,14 @@
 package com.nnhh.practice.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nnhh.practice.model.Notice;
 import com.nnhh.practice.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -42,7 +46,14 @@ public class noticeController {
 			model.addAttribute("notice",noticeService.getNoticeDetail(id));
 			return "updateNoticeForm";
 		}
-	
-	
-
+		
+		//채용공고 리스트 페이지 (홈) 
+		@GetMapping("/search")
+		public String search(Model model, @RequestParam String keyword) {
+			 List<Notice> notices = noticeService.getNoticeByKeyword(keyword);
+			 model.addAttribute("keyword", keyword);
+			 model.addAttribute("notices", notices );
+			 
+			return "searchResult";
+		}
 }

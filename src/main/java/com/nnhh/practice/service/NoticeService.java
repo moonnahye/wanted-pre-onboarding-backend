@@ -84,4 +84,9 @@ public class NoticeService {
 		notice.setContent(requestNotice.getContent());
 		notice.setSkill(requestNotice.getSkill());
 	}
-}
+	
+	@Transactional(readOnly = true)
+	public List<Notice> getNoticeByKeyword(String keyword){
+		return noticeRepository.findByContentContainingOrPositionContainingOrSkillContaining(keyword, keyword, keyword);
+	}
+ }

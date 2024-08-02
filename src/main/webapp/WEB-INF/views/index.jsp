@@ -15,7 +15,19 @@
 
 <div class="container">
 <br>
-<a href="/notice/saveForm" class="btn btn-secondary">채용공고 등록하기</a>
+<div class="d-flex justify-content-between">
+
+			<div>
+				<a href="/" class="btn btn-info"> Home </a> <a href="/notice/saveForm" class="btn btn-success ">채용공고 등록하기</a>
+			</div>
+			<div class="form-group">
+				<form action="/search" method="get" class="form-inline">
+					<input type="text" class="form-control" name="keyword" required>
+					<button class="btn btn-secondary">검색하기</button>
+			</div>
+			</form>
+		</div>
+		</div>
 
 <c:forEach var="notice" items="${notice}">
 		<div class="card m-4">
