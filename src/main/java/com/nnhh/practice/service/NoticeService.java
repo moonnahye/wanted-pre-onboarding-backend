@@ -66,5 +66,10 @@ public class NoticeService {
 			new IllegalArgumentException("공고가 없습니다. 공고 ID:"+id));
 	}
 	
+	@Transactional
+	public void deleteNotice(int id) {
+		noticeRepository.deleteById(id);
+	}
+	
 
 }

@@ -4,10 +4,14 @@ let index={
 			this.save();
 		});
 		
+		$(".btn-delete").on("click", (e) => {
+					let id = $(e.target).data("id");
+					this.deleteById(id);
+				});
+		
 	},
 	
 	save: function(){
-		
 		let data={
 			comId: $("#comId").val(),
 			position: $("#position").val(),
@@ -28,6 +32,22 @@ let index={
 			
 		}).fail(function(error){
 			alert("등록에 실패했습니다.");
+		});
+	},
+	
+	deleteById: function(id){
+		
+		$.ajax({
+			type: "DELETE",
+			url: "api/notice/"+id,
+			data: JSON.stringify(id),
+			dataType: "json"
+		}).done(function(resp){
+			alert("삭제 했습니다.");
+			location.href="/"
+		}).fail(function(error){
+			alrert("삭제에 실패했습니다.")
+			
 		});
 		
 	}
