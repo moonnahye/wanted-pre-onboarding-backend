@@ -92,6 +92,7 @@ public class NoticeService {
 	}
 	
 	//Company의 comId로 공고목록 가져오기
+	@Transactional(readOnly = true)
 	public List<Notice> getNoticeByComId(int ComId){
 		return noticeRepository.findByCompany_ComId(ComId);
 	}
