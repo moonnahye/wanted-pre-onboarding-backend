@@ -22,8 +22,9 @@ public class NoticeService {
 	
 	//채용공고 저장하기
 	@Transactional
-	public void saveNotice(NoticeSaveReqDto dto) {
+	public int saveNotice(NoticeSaveReqDto dto) {
 		
+		//Company 데이터 입력 
 		Company company1 = new Company();
 		company1.setComId(1);
 		company1.setName("NH Company");
@@ -51,6 +52,7 @@ public class NoticeService {
 				.build();
 		
 		noticeRepository.save(notice);
+		return 1;
 	}
 	
 	//채용공고 리스트 가져오기
@@ -74,7 +76,7 @@ public class NoticeService {
 	
 	//채용공고 수정하기
 	@Transactional
-	public void updateNotice(int id, Notice requestNotice) {
+	public int updateNotice(int id, Notice requestNotice) {
 		
 		Notice notice = noticeRepository.findById(id).orElseThrow(()->
 		new IllegalArgumentException("공고가 없습니다. 공고 ID:"+id));
@@ -83,6 +85,8 @@ public class NoticeService {
 		notice.setCompensation(requestNotice.getCompensation());
 		notice.setContent(requestNotice.getContent());
 		notice.setSkill(requestNotice.getSkill());
+		
+		return 1;
 	}
 	
 	//검색어로 공고 목록 가져오기
